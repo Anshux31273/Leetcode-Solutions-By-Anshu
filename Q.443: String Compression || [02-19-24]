@@ -1,0 +1,56 @@
+//String compression
+
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        if(chars.size() == 1)   return 1;
+        int i = 0;
+        vector<char> ans;
+        int res = 1;
+        string str = "";
+        while(i < chars.size() - 1)
+        {
+            
+            if(chars[i] == chars[i + 1])
+            {
+                res ++;
+                i ++;
+            }
+            else
+            {
+                char temp = chars[i];
+                str += chars[i];
+                if(res > 1)
+                {
+                    string tem = to_string(res);
+                    str += tem;
+                }
+                i ++;
+                res = 1;
+            }
+        }
+
+        if(chars[i] == chars[i - 1])
+        {
+            char temp = chars[i];
+            str += chars[i];
+            if(res > 1)
+            {
+                string tem = to_string(res);
+                str += tem;
+            }
+        }
+        else
+        {
+            char temp = chars[i];
+            str += chars[i];
+        }
+
+        for(int j = 0;j < str.size();j ++)
+        {
+            chars[j] = str[j];
+        }
+        
+        return str.size();
+    }
+};
