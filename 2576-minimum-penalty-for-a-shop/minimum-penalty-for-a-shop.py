@@ -11,7 +11,7 @@ class Solution:
             else:
                 precum[i] = precum[i - 1] - 1
         max, ans = 0, 0
-        print(precum)
+        
 
         for i in range(len(precum)):
             if precum[i] > max:
